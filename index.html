@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
+        html, body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box{
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        #num{
+            font-family: 'poppins';
+            font-size: 100px;
+            line-height: 100%;
+            font-weight: bold;
+            cursor: none;
+            user-select: none;
+
+            transition: 0.5s;
+        }
+
+
+        #reset{
+            box-sizing: border-box;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+
+            font-family: 'poppins';
+            font-weight: bold ;
+            color: red;
+            user-select: none;
+
+            transition: 0.5s;
+        }
+
+        #info{
+            box-sizing: border-box;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            font-family: 'poppins';
+            font-weight: bold ;
+            user-select: none;
+
+            transition: 0.5s;
+        }
+
+        #switch{
+            width: 50px;
+            height: 25px;
+            position: absolute;
+            bottom: 20px;
+            border-radius: 50px;
+            border: 2px solid black;
+
+            display: flex;
+            align-items: center;
+
+            transition: 0.5s;
+            
+        }
+
+        #ball{
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            background-color: black;
+            
+            transform: translateX(2px);
+            transition: 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="reset">RESET</div>
+    <div id="info">INFO</div>
+
+    <div class="box" id="touch">
+            
+        <p id="num">0</p>
+    </div>
+
+    <div id="switch">
+        <div id="ball"></div>
+    </div>
+
+
+
+    <script>
+        let num = document.getElementById('num');
+        let text = parseInt(num.textContent);
+        let touch = document.getElementById('touch');
+
+
+        let colorBg = "white";
+        let colorText = "black";
+
+        touch.addEventListener('click', function(){
+            text += 1;
+            num.textContent = text;
+        });
+
+
+        let reset = document.getElementById('reset');
+
+        reset.addEventListener('click', function(){
+            num.textContent = 0;
+            text = 0;
+        });
+
+
+        let info = document.getElementById('info');
+        info.addEventListener('click', function(){
+            alert('About : \nDev Jung Dhika \nVersion 1.0.0' );
+        });
+
+
+
+
+        let theme = "white";
+
+        let switchs = document.getElementById('switch');
+        let ball = document.getElementById('ball');
+
+        switchs.addEventListener('click', ()=>{
+
+            if(theme === "white"){
+                document.body.style.backgroundColor = "black";
+                reset.style.color = "white";
+                info.style.color = "white";
+                num.style.color = "white";
+                switchs.style.border = "2px solid white";
+                ball.style.backgroundColor = "white";
+
+                ball.style.transform = "translateX(26px)";
+
+
+                theme = "black";
+            }else{
+                document.body.style.backgroundColor = "white";
+                reset.style.color = "red";
+                info.style.color = "black";
+                num.style.color = "black";
+                switchs.style.border = "2px solid black";
+                ball.style.backgroundColor = "black";
+
+                ball.style.transform = "translateX(2px)";
+                
+
+                theme = "white";
+            }
+        });
+
+
+    </script>
+</body>
+</html>
